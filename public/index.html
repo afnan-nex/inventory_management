@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+    <div class="container">
+        <div class="row justify-content-center align-items-center min-vh-100">
+            <div class="col-md-6 col-lg-5 text-center">
+                <i class="bi bi-box-seam display-1 text-primary mb-3"></i>
+                <h2 class="fw-bold">Inventory Management System</h2>
+                <p class="text-muted mb-4">Phase 1 - Production Ready</p>
+                <div id="redirect-msg" class="alert alert-info d-none">
+                    Redirecting...
+                </div>
+                <a href="http://localhost:3000" class="btn btn-primary btn-lg" id="openAppBtn">
+                    <i class="bi bi-rocket-takeoff me-2"></i>Open Application
+                </a>
+                <p class="text-muted mt-3 small">Make sure the server is running on port 3000</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+            document.getElementById('openAppBtn').classList.add('d-none');
+            const token = localStorage.getItem('token');
+            if (token) {
+                window.location.href = 'pages/dashboard.html';
+            } else {
+                window.location.href = 'pages/login.html';
+            }
+        } else {
+            document.getElementById('redirect-msg').classList.remove('d-none');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
